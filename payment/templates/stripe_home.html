@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stripe</title>
+    <style type="text/css" media="screen">
+        form article label {
+        display: block;
+        margin: 5px;
+        }
+
+        form .submit {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container" align="center">
+    <div class="row">
+        <h1>Click on the button for payment!!</h1>
+        <form action="{% url 'stripe_checkout' %}" method="POST">
+        {% csrf_token %}
+
+        <article>
+            <label>
+                <span>Do not refresh!!</span>
+            </label>
+        </article>
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="{{key}}"
+                data-image = "https://tinyurl.com/y3zspzmv"
+                data-description="{{desp}}"
+                data-amount="{{amount}}"
+                data-locale="auto"></script>
+    </form>
+    </div>
+</div>
+
+</body>
+</html>

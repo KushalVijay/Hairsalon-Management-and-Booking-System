@@ -1,0 +1,242 @@
+/**************** about css start ****************/
+.about_part{
+    position: relative;
+    z-index: 1;
+    padding: 80px 0px;
+    .col-lg-6{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .about_img{
+        position: relative;
+        .about_img_1{
+            float: left;
+            max-width: 300px;
+        }
+        .about_img_2{
+            position: absolute;
+            left: 15%;
+            top: 251px;
+            @media #{$small_mobile}{
+                top: 25px;
+                left: 15px;
+                max-width: 300px;
+            }
+            @media #{$large_mobile}{
+                top: 25px;
+                left: 15px;
+                max-width: 350px;
+            }
+            @media #{$tab_device}{
+                top: 25px;
+                left: 15px;
+                max-width: 350px;
+            }
+            @media #{$medium_device}{
+                top: -100px;
+                max-width: 350px;
+                z-index: 3;
+            }
+            @media #{$big_screen}{
+                top: -100px;
+                max-width: 350px;
+                z-index: 3;
+            }
+            @media #{$extra_big_screen}{
+                z-index: 3;
+                top: 110px;
+            }
+            
+        }
+        .about_img_3{
+            float: right;
+            @media #{$small_mobile}{
+                display: none;
+            }
+            @media #{$large_mobile}{
+                display: none;
+            }
+            @media #{$tab_device}{
+                display: none;
+            }
+            @media #{$medium_device}{
+                float: right;
+                max-width: 440px;
+                top: 10px;
+                position: absolute;
+                right: 0;
+                z-index: 2;
+            }
+            @media #{$big_screen}{
+                float: right;
+                max-width: 440px;
+                top: 10px;
+                position: absolute;
+                right: 0;
+                z-index: 2;
+            }
+            @media #{$extra_big_screen}{
+                float: right;
+                max-width: 440px;
+                top: 10px;
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+
+    .about_text{
+        padding-left: 7px;
+        @media #{$small_mobile}{
+            margin-top: 100px;
+            padding-left: 0;
+        }
+        @media #{$large_mobile}{
+            margin-top: 150px;
+            padding-left: 0;
+        }
+        @media #{$tab_device}{
+            padding-left: 45px;
+            padding-top: 80px;
+        }
+        @media #{$medium_device}{
+            
+        }
+        h5{
+            font-family: $font_stack_2;
+            font-size: 13px;
+            color: $btn_bg;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            padding-left: 10px;
+            
+            &:after{
+                position: absolute;
+                content: "";
+                top: 9px;
+                width: 100px;
+                height: 1px;
+                background-color: #f0f0f0;
+                left: 85px;
+            }
+            &:before{
+                position: absolute;
+                content: "";
+                top: -8px;
+                width: 45px;
+                height: 36px;
+                background-color: #f0f0f0;
+                left: 0px;
+                z-index: -1;
+            }
+              
+        }
+        h4{
+            margin-bottom: 25px;
+            color: $common_color;
+            font-size: 24px; 
+            font-weight: 300; 
+            @media #{$small_mobile}{
+                margin-bottom: 20px;
+                font-size: 17px;
+            }
+            @media #{$large_mobile}{
+                margin-bottom: 20px;
+                font-size: 17px;
+            }
+            @media #{$tab_device}{
+                margin-bottom: 20px;
+                font-size: 17px;
+            }
+            @media #{$medium_device}{
+                margin-bottom: 20px;
+                font-size: 17px;
+            }       
+        }
+        h2{
+            line-height: 1.25;
+            margin-bottom: 21px;
+            font-size: 45px;
+            @media #{$small_mobile}{
+                margin-bottom: 15px;
+                font-size: 25px;
+            }
+            @media #{$large_mobile}{
+                margin-bottom: 15px;
+                font-size: 25px;
+            }
+            @media #{$tab_device}{
+                font-size: 25px;  
+                margin-bottom: 15px;
+            }
+            @media #{$medium_device}{
+                font-size: 30px;  
+                margin-bottom: 15px;
+            }
+        }
+        p{
+            margin-top: 13px;
+            margin-bottom: 20px;
+            @media #{$small_mobile}{
+                margin-bottom: 10px;
+            }
+            @media #{$large_mobile}{
+                margin-bottom: 10px;
+            }
+            @media #{$tab_device}{
+            
+            }
+            @media #{$medium_device}{
+                
+            }
+        }
+        .btn_3{
+            margin-top: 23px;
+        }
+    }
+}
+.about_bg{
+    position: relative;
+    z-index: 1;
+    &:after{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        content: "";
+        bottom: 133px;
+        z-index: -1;
+        background: url(../img/about_overlay.png) bottom right no-repeat;
+        background-size: 15% 60%;
+        right: 0px;
+        @media #{$small_mobile}{
+            display: none;
+        }
+        @media #{$large_mobile}{
+            display: none;
+        }
+        @media #{$tab_device}{
+            display: none;
+        }
+        @media #{$medium_device}{
+            background-size: 15% 50%;
+        }
+    }
+}
+.single_about_padding{
+    padding: 130px 0px 175px;
+    @media #{$small_mobile}{
+        padding: 70px 0px 70px;
+    }
+    @media #{$large_mobile}{
+        padding: 70px 0px 70px;
+    }
+    @media #{$tab_device}{
+        padding: 70px 0px 105px;
+    }
+    @media #{$medium_device}{
+        padding: 100px 0px 180px;
+    }
+}

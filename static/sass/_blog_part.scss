@@ -1,0 +1,63 @@
+/**************** blog part css start ****************/
+.blog_part{
+    .single_service_part{
+        .single_service_text{
+            padding: 26px 0px 35px;
+            p{
+                margin: 0 0 12px;
+                a{
+                    font-size: 12px;
+                    color: #888888;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                    &:hover{
+                        color: $btn_bg;
+                    }
+                }
+                span{
+                    margin: 0px 10px;
+                }
+            }
+            h4{
+                font-size: 22px;
+                font-weight: 700;
+                margin-bottom: 15px;
+                @media #{$small_mobile}{
+
+                }
+                @media #{$large_mobile}{
+                
+                }
+                @media #{$tab_device}{
+                    font-size: 20px;
+                }
+                @media #{$medium_device}{
+                    font-size: 18px;
+                    margin-bottom: 10px;
+                }
+                a{
+                    color: $heading_color;
+                    &:hover{
+                        color: $btn_bg;
+                    }
+                }
+            }
+            .btn_3{
+                margin-top: 21px;
+                @media #{$small_mobile}{
+                    margin-top: 10px;
+                }
+                @media #{$large_mobile}{
+                    margin-top: 10px;
+                }
+                @media #{$tab_device}{
+                    margin-top: 10px;
+                }
+                @media #{$medium_device}{
+                    
+                }
+            }
+        }
+    }
+    
+} 

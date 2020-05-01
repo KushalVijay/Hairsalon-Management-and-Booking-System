@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+    <style>
+    body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background: linear-gradient(-45deg, black 50%, gray 50%);
+    background-repeat: no-repeat
+}
+
+.card {
+    background-color: #FFF;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px 0 rgb(0,0,0);
+    padding: 40px;
+    z-index: 0
+}
+
+.heading {
+    font-weight: normal
+}
+
+.desc {
+    font-size: 14px
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+    padding-left: 0px
+}
+
+#progressbar .active {
+    color: #673AB7
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar .step0:before {
+    content: ""
+}
+
+#progressbar li:before {
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    background: #E0E0E0;
+    border-radius: 50%;
+    margin: auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 10px;
+    background: #E0E0E0;
+    position: absolute;
+    left: 0;
+    top: 17px;
+    z-index: -1
+}
+
+#progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+
+#progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: salmon
+}
+
+.sub-heading {
+    font-weight: 500
+}
+
+.yellow-text {
+    color: #F9A825
+}
+
+fieldset.show {
+    display: block
+}
+
+fieldset {
+    display: none
+}
+
+.radio {
+    display: inline-block;
+    border-radius: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: #BDBDBD;
+    font-weight: 500;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%)
+}
+
+.radio:hover {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.radio.selected {
+    border: 1px solid #F9A825;
+    box-shadow: 0px 8px 16px 0px #EEEEEE;
+    color: #29B6F6 !important;
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -o-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+    filter: grayscale(0%)
+}
+
+.card-block {
+    border: 1px solid #CFD8DC;
+    width: 40%;
+    margin: 2%;
+    padding: 20px 20px 20px 20px
+}
+
+@media screen and (max-width: 768px) {
+    .card-block {
+        padding: 20px 20px 0px 20px;
+        height: 100px
+    }
+}
+
+.icon {
+    width: 85px;
+    height: 100px
+}
+
+.image-icon {
+    width: 85px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px
+}
+
+select,
+input,
+textarea,
+button {
+    padding: 8px 15px 8px 15px;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    background-color: #ECEFF1;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    letter-spacing: 1px
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid skyblue !important;
+    outline-width: 0
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+textarea {
+    height: 100px
+}
+
+button {
+    width: 120px;
+    letter-spacing: 2px
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+
+.btn-block {
+    border-radius: 5px;
+    height: 50px;
+    font-weight: 500;
+    cursor: pointer
+}
+
+.fa-long-arrow-right {
+    float: right;
+    margin-top: 4px
+}
+
+.fa-long-arrow-left {
+    float: left;
+    margin-top: 4px
+}
+</style>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-4 col-lg-6 col-md-7">
+            <div class="card b-0">
+                <h3 class="heading">Booking Details</h3>
+
+
+
+                <form method="POST" action="{% url 'payment_home' %}">{% csrf_token %}
+                    <input type="hidden" name="order_id" value="{{ order_id }}">
+                    <input type="hidden" name="email" value="{{ email }}">
+                    <input type="hidden" name="service" value="{{ service }}">
+                    <input type="hidden" name="stylist" value="{{ stylist }}">
+                    <input type="hidden" name="date" value="{{ date }}">
+                    <input type="hidden" name="time" value="{{ time }}">
+                    <input type="hidden" name="amount" value="{{ amount }}">
+                    <input type="hidden" name="name" value="{{ name }}">
+                <div class="form-card">
+                    <p><b>Order ID :</b>&nbsp;&nbsp;{{order_id}}</p>
+                    <p><b>Name :</b>&nbsp;&nbsp;{{name}}</p>
+                    <p><b>Email :</b>&nbsp;&nbsp;{{email}}</p>
+                    <p><b>Service :</b>&nbsp;&nbsp;{{service}}</p>
+                    <p><b>Stylist :</b>&nbsp;&nbsp;{{stylist}}</p>
+                    <p><b>Date :</b>&nbsp;&nbsp;{{date}}</p>
+                    <p><b>Time :</b>&nbsp;&nbsp;{{time}}</p>
+                    <p><b>Amount :</b>&nbsp;&nbsp;{{amount}} $</p>
+                    <div align="center" class="check"> <img  style="width:100px;height:100px;" class="fit-image check-img" src="{% static 'img/success.gif'%}"> </div>
+                </div>
+                <p>Already logged in?</p>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <button name="submit" value="button1" type="submit" class="btn btn-info">Pay via Paypal</button>
+                    <div class="col-1"></div>
+                    <button name="submit" value="button3" type="submit" class="btn btn-info">Pay via Card</button>
+                </div>
+                    <hr>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <button name="submit" value="button2" type="submit" class="btn btn-info">Login & Pay</button>
+                </div>
+
+
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+<br><br><br><br>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+/**************** service_part css start ****************/
+.service_part{
+   .single_service_part{
+      text-align: center;
+      padding: 15px 15px 0px;
+      border: 3px solid rgb(227, 230, 234);
+      @media #{$small_mobile}{
+         margin-bottom: 15px;
+      }
+      @media #{$large_mobile}{
+         margin-bottom: 15px;
+      }
+      @media #{$tab_device}{
+         margin-bottom: 15px;
+      }
+      @media #{$medium_device}{
+      
+      }
+      img{
+         width: 100%;
+         height: auto;
+      }
+      .single_service_text{
+         padding: 40px 30px 50px;
+         @media #{$small_mobile}{
+            padding: 25px 0px 30px;
+         }
+         @media #{$large_mobile}{
+         
+         }
+         @media #{$tab_device}{
+            padding: 25px 0px 30px;
+         }
+         @media #{$medium_device}{
+            padding: 25px 0px 30px;
+         }
+         h4{
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: capitalize;
+            @media #{$small_mobile}{
+               font-size: 18px !important;
+            }
+            @media #{$large_mobile}{
+            
+            }
+            @media #{$tab_device}{
+            
+            }
+            @media #{$medium_device}{
+                
+            }
+         }
+         p{
+            margin: 25px 0px 39px;
+            @media #{$small_mobile}{
+               margin: 10px 0px 20px;
+            }
+            @media #{$large_mobile}{
+            
+            }
+            @media #{$tab_device}{
+               margin: 10px 0px 20px;
+            }
+            @media #{$medium_device}{
+               margin: 10px 0px 20px;
+            }
+         }
+      }
+   }
+   @media #{$small_mobile}{
+      .btn_3{
+         margin-top: 0px;
+      }
+   }
+   @media #{$large_mobile}{
+   
+   }
+   @media #{$tab_device}{
+   
+   }
+   @media #{$medium_device}{
+   
+   }
+}

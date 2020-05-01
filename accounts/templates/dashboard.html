@@ -1,0 +1,92 @@
+
+{% extends "base2.html" %}
+{% block content %}
+
+     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{% url 'home' %}">John Hair Salon</a>
+<ul class="navbar-nav" >
+                    <li class="nav-item text-nowrap">
+                        <a  class="nav-link active" href="{% url 'home' %}">Home</a></li>
+
+        </ul>
+<ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+              <br><br>
+
+
+                  <input type="hidden" name="clinicname" value="{{clinic_name}}">
+                  <label class="col-sm-12 col-form-label"><font size="4">Store Name : <b>{{ store_name }}</b></font></label>
+
+              {% for employee in employees %}
+              <div>
+                       <form method='POST' action="{% url 'dashboard' %}">
+                        {% csrf_token %}
+
+                           <input type="hidden" name="emp_name" value="{{ employee }}">
+                           #)&nbsp;<button  type="submit" class="btn btn-success" style="padding: 2px;cursor: pointer;color:black;">
+                               <font color="white" size="3"><b>{{employee}}</b></font>
+                        </button>
+                        </form>
+                  <hr>
+              </div>
+               {% endfor %}
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+          </div>
+
+          <div id="demo" width="900" height="380"></div>
+            {% if emp_name %}
+                <div class="container" align="center">
+                <h3><strong>Employee Info</strong></h3><br>
+                </div>
+
+                    <div>
+                    <div class="container">
+                            <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-4">
+                                    <p><b>Name : </b>{{emp_info.name}}</p>
+                            <p><b>Email : </b> {{emp_info.user.email}}</p>
+                            <p><b>Phone : </b> {{emp_info.contact}}</p>
+                            <p><b>Store Name : </b> {{emp_info.store.name}}</p>
+                            <p><b>Store Email : </b> {{emp_info.store.email}}</p>
+                            <p><b>Taxes : </b> {{emp_info.taxes}}</p>
+                            <p><b>Leaves : </b> {{emp_info.leaves}}</p>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-4">
+                                    <p><b>Salary Type : </b>{{ sal_info.type }} </p>
+                            <p><b>Total Pay : </b> {{sal_info.amount}} $</p>
+
+                                </div>
+                            </div>
+
+                    </div>
+
+
+
+
+                            
+
+                </div>
+            {% endif %}
+        </main>
+    </div>
+</div>
+
+
+{% endblock content %}

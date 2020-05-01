@@ -1,0 +1,472 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+    <style>
+    body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background: linear-gradient(-45deg, black 50%, gray 50%);
+    background-repeat: no-repeat
+}
+
+.card {
+    background-color: #FFF;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px 0 rgb(0,0,0);
+    padding: 40px;
+    z-index: 0
+}
+
+.heading {
+    font-weight: normal
+}
+
+.desc {
+    font-size: 14px
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+    padding-left: 0px
+}
+
+#progressbar .active {
+    color: #673AB7
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar .step0:before {
+    content: ""
+}
+
+#progressbar li:before {
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    background: #E0E0E0;
+    border-radius: 50%;
+    margin: auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 10px;
+    background: #E0E0E0;
+    position: absolute;
+    left: 0;
+    top: 17px;
+    z-index: -1
+}
+
+#progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+
+#progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: salmon
+}
+
+.sub-heading {
+    font-weight: 500
+}
+
+.yellow-text {
+    color: #F9A825
+}
+
+fieldset.show {
+    display: block
+}
+
+fieldset {
+    display: none
+}
+
+.radio {
+    display: inline-block;
+    border-radius: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: #BDBDBD;
+    font-weight: 500;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%)
+}
+
+.radio:hover {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.radio.selected {
+    border: 1px solid #F9A825;
+    box-shadow: 0px 8px 16px 0px #EEEEEE;
+    color: #29B6F6 !important;
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -o-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+    filter: grayscale(0%)
+}
+
+.card-block {
+    border: 1px solid #CFD8DC;
+    width: 40%;
+    margin: 2%;
+    padding: 20px 20px 20px 20px
+}
+
+@media screen and (max-width: 768px) {
+    .card-block {
+        padding: 20px 20px 0px 20px;
+        height: 100px
+    }
+}
+
+.icon {
+    width: 85px;
+    height: 100px
+}
+
+.image-icon {
+    width: 85px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px
+}
+
+select,
+input,
+textarea,
+button {
+    padding: 8px 15px 8px 15px;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    background-color: #ECEFF1;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    letter-spacing: 1px
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid skyblue !important;
+    outline-width: 0
+}
+
+<!--button:focus {-->
+<!--    -moz-box-shadow: none !important;-->
+<!--    -webkit-box-shadow: none !important;-->
+<!--    box-shadow: none !important;-->
+<!--    outline-width: 0-->
+<!--}-->
+
+textarea {
+    height: 100px
+}
+
+button {
+    width: 120px;
+    letter-spacing: 2px
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+
+.btn-block {
+    border-radius: 5px;
+    height: 50px;
+    font-weight: 500;
+    cursor: pointer
+}
+
+.fa-long-arrow-right {
+    float: right;
+    margin-top: 4px
+}
+
+.fa-long-arrow-left {
+    float: left;
+    margin-top: 4px
+}
+
+.twitter-typeahead {
+  width: 100%;
+}
+
+.typeahead, .tt-query, .tt-hint {
+    background-color: white;
+
+	font-size: 15px;
+
+	padding: 8px 12px;
+	width: 400px;
+}
+
+.tt-dropdown-menu {
+
+	background-color: white;
+	border: 1px solid white;
+	border-radius: 8px;
+	box-shadow: red;
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 422px;
+}
+.tt-suggestion {
+	font-size: 10px;
+	line-height: 10px;
+	padding: 3px 10px;
+}
+
+
+</style>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.0/bootstrap3-typeahead.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css"></script>
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+<div class='container' align="center">
+     <div class="row">
+         <div class="col-sm-4">
+            <a class="navbar" href="{% url 'home' %}">
+                <img src="{% static 'img/favicon.png' %}" alt="logo" style="width:120px;"><h1><font face="Courier New" size=6 color="black"><b>Hair Salon</b></font></h1>
+
+            </a>
+         </div>
+     </div>
+
+    </div>
+
+<hr>
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-4 col-lg-6 col-md-7">
+            <div class="card b-0">
+                <form method="POST" action="{% url 'success' %}">{% csrf_token %}
+                <h3 class="heading">Book your Service</h3>
+
+
+                <ul id="progressbar" class="text-center">
+                    <li class="active step0" id="step1"></li>
+                    <li class="step0" id="step2"></li>
+                    <li class="step0" id="step3"></li>
+                    <li class="step0" id="step4"></li>
+                </ul>
+
+
+                <fieldset class="show">
+                    <div class="form-card" align="center">
+                        <h5 class="sub-heading" align="left">Select Service :</h5>
+                        <hr>
+                        <div class="form-group">
+                              <input name="service" id="service" type="text" data-provide="typeahead" class="form-control" placeholder="Type your service..." required>
+
+                        </div>
+<!--                        <h5 align="left">Trending :</h5>-->
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <label class="btn btn-danger">Hair Wash</label>&nbsp;
+                            <label class="btn btn-danger">Hair Colour</label>&nbsp;
+                            <label class="btn btn-danger">Hair Spa</label>&nbsp;
+
+                        </div>
+
+                        <button id="next1" class="btn btn-primary mt-3 mb-1 next mt-4">NEXT<span class="fa fa-long-arrow-right"></span></button>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-card" align="center">
+                        <h5 class="sub-heading mb-4" align="left">Select Stylist</h5>
+                        <div class="form-group">
+                            <div class="select mb-3"> <select name="employee" class="form-control" required>
+                                    <option>Random</option>
+                                {% for employee in employees %}
+                                    <option>{{ employee }}</option>
+                                {% endfor %}
+                                </select> </div>
+                        </div>
+                        <button id="next2" class="btn btn-primary mt-3 mb-1 next mt-4" onclick="validate1(0)">NEXT<span class="fa fa-long-arrow-right"></span></button><br>
+                        <button style="width:150px;" class="btn btn-secondary mt-3 mb-1 prev mt-4"><span class="fa fa-long-arrow-left"></span>PREVIOUS</button>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-card" align="center">
+                        <h5 class="sub-heading mb-4" align="left">Personal Details</h5>
+                        <div class="form-group"> <label class="form-control-label">Full Name :</label> <input type="text" id="name" name="name" placeholder="" class="form-control" onblur="validate2(1)" required> </div>
+                        <div class="form-group"> <label class="form-control-label">Email Id :</label> <input type="text" id="cname" name="email" placeholder="" class="form-control" onblur="validate2(1)" required> </div>
+                        <div class="form-group"> <label class="form-control-label">Phone :</label> <input type="text" id="zip" name="contact" placeholder="" class="form-control" onblur="validate2(2)" required> </div>
+                        <div class="form-group"> <label class="form-control-label">Date :</label> <input type="date" id="state" name="date" placeholder="" class="form-control" onblur="validate2(3)" required> </div>
+                        <div class="form-group"> <label class="form-control-label">Time :</label>
+                            <div class="select mb-3"> <select name="time" class="form-control" required>
+                                    <option>Choose visit time</option>
+                                    <option>10:00 am</option>
+                                    <option>11:00 am</option>
+                                    <option>12:00 am</option>
+                                    <option>1:00 pm</option>
+                                    <option>2:00 pm</option>
+                                    <option>3:00 pm</option>
+                                    <option>4:00 pm</option>
+                                    <option>5:00 pm</option>
+                                    <option>6:00 pm</option>
+                                </select> </div>
+                    </div> <button  style="width:250px;" class="btn btn-primary mt-3 mb-1 next mt-4" onclick="validate2(0)">CONFIRM BOOKING<span class="fa fa-long-arrow-right"></span></button>
+                        <br><button style="width:150px;" type="submit" class="btn-block btn-secondary mt-3 mb-1 prev"><span class="fa fa-long-arrow-left"></span>PREVIOUS</button>
+                    </div>
+                </fieldset>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>-->
+<!--<script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<script>
+var typeaheadData = {{ services|safe }};
+
+jQuery(document).ready(function() {
+  $('#service').typeahead({
+    source: typeaheadData
+  });
+});
+    function validate1(val) {
+return true;
+}
+
+function validate2(val) {
+
+return true;
+}
+
+$(document).ready(function(){
+
+var current_fs, next_fs, previous_fs;
+
+$(".next").click(function(){
+
+str1 = "next1";
+str2 = "next2";
+str3 = "next3";
+
+if(!str2.localeCompare($(this).attr('id')) && validate1(0) == true) {
+val2 = true;
+}
+else {
+val2 = false;
+}
+
+if(!str3.localeCompare($(this).attr('id')) && validate2(0) == true) {
+val3 = true;
+}
+else {
+val3 = false;
+}
+
+if(!str1.localeCompare($(this).attr('id')) || (!str2.localeCompare($(this).attr('id')) && val2 == true) || (!str3.localeCompare($(this).attr('id')) && val3 == true)) {
+current_fs = $(this).parent().parent();
+next_fs = $(this).parent().parent().next();
+
+$(current_fs).removeClass("show");
+$(next_fs).addClass("show");
+
+$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+current_fs.animate({}, {
+step: function() {
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+
+next_fs.css({
+'display': 'block'
+});
+}
+});
+}
+});
+
+$(".prev").click(function(){
+
+current_fs = $(this).parent().parent();
+previous_fs = $(this).parent().parent().prev();
+
+$(current_fs).removeClass("show");
+$(previous_fs).addClass("show");
+
+$("#progressbar li").eq($("fieldset").index(next_fs)).removeClass("active");
+
+current_fs.animate({}, {
+step: function() {
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+
+previous_fs.css({
+'display': 'block'
+});
+}
+});
+});
+
+$('.radio-group .radio').click(function(){
+$(this).toggleClass('selected');
+});
+
+});
+
+
+
+</script>
+</body>
+</html>

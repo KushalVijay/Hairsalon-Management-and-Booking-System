@@ -1,0 +1,131 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+
+#button2 {
+    width: 3em;  height: 1.8em;
+}
+#button1 {
+    width: 3em;  height: 1.8em;
+}
+
+.twitter-typeahead {
+  width: 100%;
+}
+
+.typeahead, .tt-query, .tt-hint {
+    background-color: white;
+
+	font-size: 15px;
+
+	padding: 8px 12px;
+	width: 760px;
+}
+
+.tt-dropdown-menu {
+
+	background-color: white;
+	border: 1px solid white;
+	border-radius: 8px;
+	box-shadow: red;
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 422px;
+}
+.tt-suggestion {
+	font-size: 10px;
+	line-height: 10px;
+	padding: 3px 10px;
+}
+
+
+</style>
+  <!-- breadcrumb start-->
+  <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner text-center">
+            <div class="breadcrumb_iner_item">
+              <h2>Find Jobs</h2>
+              <p>home <span class="ti-angle-double-right"></span>Find Jobs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
+
+<div class='container' id="mydiv" align="center">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            {% if messages %}
+            <div class="alert alert-success ">
+            {% for message in messages %}
+            <span>
+              {{ message }}
+            </span>
+            {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+  <!-- ================ contact section start ================= -->
+  <section class="contact-section section_padding">
+    <div class="container">
+
+
+      <div class="row">
+        <div class="col-12">
+          <h2 class="contact-title">Find Jobs</h2>
+        </div>
+        <div class="col-lg-8">
+          <form  action="{% url 'search' %}" method="POST" >{% csrf_token %}
+            <div class="row">
+
+
+
+              <div class="col-12">
+                <div class="form-group">
+                  <input name="name" id="search" type="text" data-provide="typeahead" class="form-control" placeholder="Search by Store name or location" required>
+
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-danger">Search</button>
+            </div>
+          </form>
+
+            {% if store %}
+            <h1 align="center">Store Details :</h1>
+            <hr>
+            <h2 ><b ><font color="black"> Store Name: &nbsp; {{store.name}}</font></b></h2>
+            <h2><b><font color="black">Email ID: &nbsp;{{store.user.username}}</font></b></h2>
+            <h2><b><font color="black">Location:&nbsp;{{store.location}}</font></b></h2>
+            <h2><b><font color="black">Phone:&nbsp;{{store.contact}}</font></b></h2>
+
+            {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ================ contact section end ================= -->
+<script>
+var typeaheadData = {{ stores|safe }};
+jQuery(document).ready(function() {
+  $('#search').typeahead({
+    source: typeaheadData
+  });
+});
+    setTimeout(function() {
+    $('#mydiv').fadeOut('fast');
+    }, 3000);
+</script>
+{% endblock %}
